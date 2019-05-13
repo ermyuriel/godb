@@ -68,7 +68,7 @@ func (db *Database) WriteJSON(where, id string, data interface{}) error {
 	return nil
 }
 func (db Database) MYSQLCreateJSONTable(name string) error {
-	stm := fmt.Sprintf("CREATE TABLE IF NOT EXISTS %s.%s (`timestamp` int(11) unsigned,`id` varchar(255),`data` JSON,PRIMARY KEY( `timestamp`,`id` ));", db.Name, name)
+	stm := fmt.Sprintf("CREATE TABLE IF NOT EXISTS %s.%s (`timestamp` int(11) unsigned,`id` varchar(255),`data` JSON,PRIMARY KEY(`id` ));", db.Name, name)
 	create, err := db.sqlConnection.Prepare(stm)
 	if err != nil {
 		return err
