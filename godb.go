@@ -39,7 +39,7 @@ func (db *Database) Connect() error {
 	return errors.New("No known database type or type not specified")
 }
 func SQLBuildDSN(db *Database) string {
-	dsn := db.User + ":" + db.Password + "@" + db.Protocol + "(" + db.Host + ":" + db.Port + ")/" + db.Name
+	dsn := db.User + ":" + db.Password + "@" + db.Protocol + "(" + db.Host + ":" + db.Port + ")/" + db.Name + db.DSNArgs
 	return dsn
 }
 func New(user, password, dbType, protocol, host, port, name, args string) *Database {
