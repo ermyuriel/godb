@@ -21,6 +21,7 @@ type Database struct {
 	dsn                      string
 	sqlConnection            *sql.DB
 	preparedJSONSQLStatement *sql.Stmt
+	DSNArgs                  string
 }
 
 func (db *Database) Connect() error {
@@ -41,8 +42,8 @@ func SQLBuildDSN(db *Database) string {
 	dsn := db.User + ":" + db.Password + "@" + db.Protocol + "(" + db.Host + ":" + db.Port + ")/" + db.Name
 	return dsn
 }
-func New(user, password, dbType, protocol, host, port, name string) *Database {
-	return &Database{User: user, Password: password, DBType: dbType, Protocol: protocol, Host: host, Port: port, Name: name, dsn: "", sqlConnection: nil}
+func New(user, password, dbType, protocol, host, port, name, args string) *Database {
+	return &Database{User: user, Password: password, DBType: dbType, Protocol: protocol, Host: host, Port: port, Name: name, dsn: "", sqlConnection: nil, DSNArgs: args}
 }
 
 func (db *Database) WriteJSON(where, id string, data interface{}) error {
