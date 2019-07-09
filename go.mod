@@ -1,4 +1,4 @@
-module github.com/eucj/godb
+module github.com/ermyuriel/godb
 
 go 1.12
 
